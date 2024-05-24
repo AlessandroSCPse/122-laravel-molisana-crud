@@ -42,15 +42,17 @@ class PastaController extends Controller
     public function store(Request $request)
     {
         $formData = $request->all();
+        // dd($formData);
         
         // Creo nuova riga nel db
         $newPasta = new Pasta();
-        $newPasta->title = $formData['title'];
-        $newPasta->image = $formData['image'];
-        $newPasta->type = $formData['type'];
-        $newPasta->cooking_time = $formData['cooking_time'];
-        $newPasta->weight = $formData['weight'];
-        $newPasta->description = $formData['description'];
+        // $newPasta->title = $formData['title'];
+        // $newPasta->image = $formData['image'];
+        // $newPasta->type = $formData['type'];
+        // $newPasta->cooking_time = $formData['cooking_time'];
+        // $newPasta->weight = $formData['weight'];
+        // $newPasta->description = $formData['description'];
+        $newPasta->fill($formData);
         $newPasta->save();
 
         return redirect()->route('pastas.show', ['pasta' => $newPasta->id]);

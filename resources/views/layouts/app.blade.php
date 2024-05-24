@@ -26,7 +26,8 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                  <a class="nav-link" aria-current="page" href="{{ route('pastas.index') }}">Lista prodotti</a>
+                  <a class="nav-link" href="{{ route('pastas.index') }}">Lista prodotti</a>
+                  <a class="nav-link" href="{{ route('pastas.create') }}">Crea nuovo prodotto</a>
                 </div>
               </div>
             </div>
