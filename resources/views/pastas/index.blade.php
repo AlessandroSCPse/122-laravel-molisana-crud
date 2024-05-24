@@ -16,8 +16,14 @@
                             <div>Peso: {{ $pasta->weight }}</div>
                             <p class="card-text">{{ $pasta->description }}</p>
 
-                            <a href="{{ route('pastas.show', ['pasta' => $pasta->id]) }}" class="btn btn-primary">Scopri di più</a>
+                            <div>
+                                <a href="{{ route('pastas.show', ['pasta' => $pasta->id]) }}" class="btn btn-primary">Scopri di più</a>
                             </div>
+                            
+                            <div class="py-1">
+                                <a href="{{ route('pastas.edit', ['pasta' => $pasta->id]) }}" class="btn btn-primary">Modifica</a>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 @endforeach
