@@ -24,7 +24,6 @@
                                 <a href="{{ route('pastas.edit', ['pasta' => $pasta->id]) }}" class="btn btn-primary">Modifica</a>
                             </div>
                         </div>
-                        </div>
                     </div>
                 @endforeach
             </div>
