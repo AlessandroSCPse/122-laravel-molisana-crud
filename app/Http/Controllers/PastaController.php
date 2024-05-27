@@ -15,6 +15,8 @@ class PastaController extends Controller
     public function index()
     {
         $pastas = Pasta::all();
+        // $pastas = Pasta::withTrashed()->get();
+        // $pastas = Pasta::onlyTrashed()->get();
 
         $data = [
             'pastas' => $pastas
