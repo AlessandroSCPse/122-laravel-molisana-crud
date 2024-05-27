@@ -22,7 +22,7 @@
                 <div class="mb-3">
                     <label for="type" class="form-label">Tipo</label>
                     <select class="form-select" id="type" name="type">
-                        <option>Scegli un'opzione</option>
+                        <option value="" {{ $pasta->type === '' ? 'selected' : '' }}>Scegli un'opzione</option>
                         <option {{ $pasta->type === 'lunga' ? 'selected' : '' }} value="lunga">Lunga</option>
                         <option {{ $pasta->type === 'corta' ? 'selected' : '' }} value="corta">Corta</option>
                         <option {{ $pasta->type === 'cortissima' ? 'selected' : '' }} value="cortissima">Cortissima</option>

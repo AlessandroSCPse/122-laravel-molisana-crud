@@ -121,6 +121,9 @@ class PastaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pasta = Pasta::findOrFail($id);
+        $pasta->delete();
+
+        return redirect()->route('pastas.index');
     }
 }
