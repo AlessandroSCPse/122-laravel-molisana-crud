@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pasta;
+use Illuminate\Support\Facades\Validator;
 
 class PastaController extends Controller
 {
@@ -43,7 +44,27 @@ class PastaController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate(
+        //     [
+        //         'title' => 'required|min:5|max:50',
+        //         'image' => 'required|max:250',
+        //         'type' => 'required|max:20',
+        //         'cooking_time' => 'required|max:20',
+        //         'weight' => 'required|max:20',
+        //         'origin_country' => 'required|max:20',
+        //         'description' => 'nullable|min:10|max:2000'
+        //     ],
+        //     [
+        //         'title.required' => 'Il campo titolo è obbligatorio',
+        //         'title.max' => 'Il campo titolo non può avere più di 50 caratteri',
+        //         'title.min' => 'Il campo titolo deve avere almeno 5 caratteri',
+        //         'image.required' => 'Il campo immagine è obbligatorio',
+        //         'type.required' => 'Il campo tipo è obbligatorio'
+        //     ]
+        // );
+
         $formData = $request->all();
+        $this->validation($formData);
         // dd($formData);
         
         // Creo nuova riga nel db
@@ -103,8 +124,29 @@ class PastaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pasta = Pasta::findOrFail($id);
+        // $validated = $request->validate(
+        //     [
+        //         'title' => 'required|min:5|max:50',
+        //         'image' => 'required|max:250',
+        //         'type' => 'required|max:20',
+        //         'cooking_time' => 'required|max:20',
+        //         'weight' => 'required|max:20',
+        //         'origin_country' => 'required|max:20',
+        //         'description' => 'nullable|min:10|max:2000'
+        //     ],
+        //     [
+        //         'title.required' => 'Il campo titolo è obbligatorio',
+        //         'title.max' => 'Il campo titolo non può avere più di 50 caratteri',
+        //         'title.min' => 'Il campo titolo deve avere almeno 5 caratteri',
+        //         'image.required' => 'Il campo immagine è obbligatorio',
+        //         'type.required' => 'Il campo tipo è obbligatorio'
+        //     ]
+        // );
+        
         $formData = $request->all();
+        $this->validation($formData);
+
+        $pasta = Pasta::findOrFail($id);
         
         // $pasta->title = $formData['title'];
         // $pasta->type = $formData['type'];
@@ -127,5 +169,29 @@ class PastaController extends Controller
         $pasta->delete();
 
         return redirect()->route('pastas.index');
+    }
+
+    private function validation($data) {
+        $validator = Validator::make(
+            $data,
+            [
+                'title' => 'required|min:5|max:50',
+                'image' => 'required|max:250',
+                'type' => 'required|max:20',
+                'cooking_time' => 'required|max:20',
+                'weight' => 'required|max:20',
+                'origin_country' => 'required|max:20',
+                'description' => 'nullable|min:10|max:2000'
+            ],
+            [
+                'title.required' => 'Il campo titolo è obbligatorio',
+                'title.max' => 'Il campo titolo non può avere più di 50 caratteri',
+                'title.min' => 'Il campo titolo deve avere almeno 5 caratteri',
+                'image.required' => 'Il campo immagine è obbligatorio',
+                'type.required' => 'Il campo tipo è obbligatorio'
+            ]
+        )->validate();
+
+        return $validator;
     }
 }
