@@ -9,6 +9,7 @@
         <div>Cottura: {{ $pasta->cooking_time }}</div>
         <div>Peso: {{ $pasta->weight }}</div>
         <div>Tipo: {{ $pasta->type }}</div>
+        <div>Paese d'origine: {{ $pasta->origin_country }}</div>
         <p class="card-text">{{ $pasta->description }}</p>
     </div>
 @endsection

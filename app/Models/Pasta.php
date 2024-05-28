@@ -11,5 +11,5 @@ class Pasta extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'image', 'cooking_time', 'weight', 'type'];
+    protected $fillable = ['title', 'description', 'image', 'cooking_time', 'weight', 'type', 'origin_country'];
 }
